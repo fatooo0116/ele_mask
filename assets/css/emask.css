@@ -1,0 +1,23 @@
+#elementor-panel-category-pro-elements{
+   /* display: none; */
+}
+
+#elementor-panel-page-editor > #elementor-panel__editor__help,
+#elementor-panel-page-menu > #elementor-panel__editor__help{ display:none; }
+
+#elementor-editor-button{}
+
+
+#ft_mask{
+   position: absolute;;
+   width:400px;
+   height:100vh;
+   top:0;
+   right:0;
+   z-index: 99;
+   background:#eee;
+}
+
+#ft_mask{
+   padding:20px;
+}
