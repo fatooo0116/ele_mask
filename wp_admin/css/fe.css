@@ -1,0 +1,9 @@
+#wpadminbar #wp-admin-bar-elementor_edit_page>.ab-item{
+    background-image: url(cws.jpg);
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+
+#wpadminbar #wp-admin-bar-elementor_edit_page>.ab-item:before{
+    display: none;
+}

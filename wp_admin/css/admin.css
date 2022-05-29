@@ -2,3 +2,51 @@
 #elementor-editor-button{
     
 }
+
+.elementor-loader .elementor-loader-boxes{
+    visibility: hidden;
+}
+
+.elementor-loader{
+    background-image:url(ft.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#elementor-editor-button ,
+#elementor-switch-mode-button {
+    position: relative;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+
+#elementor-editor-button i,
+#elementor-switch-mode-button i{
+    background: url(cws.jpg);
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-position: center;
+    background-size: cover;
+  
+}
+
+#elementor-editor-button i:before,
+ #elementor-switch-mode-button i:before  {
+    display: none;
+}
+
+.elementor-switch-mode-off{
+    display: flex;
+    align-items: center;
+}
+
+body .block-editor #elementor-switch-mode .button i{
+    background: url(cws.jpg);
+    
+}
+body .block-editor #elementor-switch-mode .button i:before{
+   display: none;
+}

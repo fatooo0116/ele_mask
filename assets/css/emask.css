@@ -1,23 +1,177 @@
-#elementor-panel-category-pro-elements{
-   /* display: none; */
+@charset "UTF-8";
+#ft_mask {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 300px;
+  z-index: 1;
+  padding: 20px;
+  background: #f4f6fd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+  min-width: 270px; }
+  #ft_mask button {
+    cursor: pointer;
+    font-size: 16px;
+    background: #6c757d;
+    color: #fff;
+    padding: 6px 12px;
+    border: 0px;
+    border-radius: 0.375rem;
+    transition: .15s; }
+    #ft_mask button:hover {
+      background: #5c636a; }
+    #ft_mask button:active {
+      background: #404040; }
+  #ft_mask h3 {
+    margin-bottom: 10px;
+    padding: 0 0px 0 0px; }
+  #ft_mask .box {
+    display: flex;
+    align-items: center;
+    padding-top: 10px; }
+    #ft_mask .box .title {
+      min-width: 150px;
+      text-align: center; }
+    #ft_mask .box input {
+      width: calc(50% - 20px);
+      background: #fff;
+      font-size: 16px;
+      font-weight: 300; }
+  #ft_mask .box.chk input {
+    width: 20px; }
+  #ft_mask .box.chk .title {
+    width: calc(100% - 30px);
+    text-align: left; }
+  #ft_mask .action {
+    padding: 20px;
+    text-align: center; }
+  #ft_mask #control {
+    border-top: 1px solid #cfcaca;
+    position: absolute;
+    bottom: 0;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    left: 0;
+    text-align: right; }
+
+#elementor-panel-get-pro-elements {
+  display: none; }
+
+.elementor-loader {
+  visibility: hidden; }
+
+.elementor-loader-wrapper {
+  background-image: url(FT.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 140px auto; }
+
+.elementor-panel #elementor-panel-header {
+  background-color: #3b83ba !important; }
+
+#elementor-panel-header-title img {
+  visibility: hidden;
+  display: none; }
+
+#elementor-panel-header-title::before {
+  content: '';
+  font-size: 20px;
+  display: block;
+  margin-right: 10px;
+  background: url(cws.jpg);
+  width: 32px;
+  height: 32px; }
+
+#elementor-panel-header-title {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 100%; }
+
+.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.elementor-active {
+  border-color: #0092ab !important; }
+
+/*   全域小工具  */
+#elementor-panel-elements-navigation .elementor-panel-navigation-tab[data-tab=global] {
+  display: none !important; }
+
+/*  專業版關掉 */
+#elementor-panel-category-pro-elements {
+  display: none; }
+
+/* ICON change */
+.eicon-wordpress-light:before {
+  content: "" !important; }
+
+.e-logo-wrapper {
+  display: none !important; }
+
+body .block-editor #elementor-switch-mode .button i {
+  background-image: url(ft-logo2.png); }
+
+@media (max-width: 1440px) {
+  #ft_mask {
+    left: 280px; } }
+/*   Disable first  */
+/*
+#elementor-panel-elements-search-area,
+#elementor-panel-category-favorites,
+#elementor-panel-category-wordpress
+#elementor-panel-category-woocommerce-elements{
+    display: none ! important;
 }
+*/
+#elementor-panel-category-qi-addons,
+#elementor-panel-category-qode,
+#elementor-panel-category-element-pack {
+  display: none; }
+
+#elementor-panel-page-menu-content .elementor-panel-menu-group:nth-child(1),
+#elementor-panel-page-menu-content .elementor-panel-menu-group .elementor-panel-menu-item-finder,
+#elementor-panel-category-theme-elements,
+#elementor-panel-elements-search-area,
+#elementor-panel-category-favorites,
+#elementor-panel-category-woocommerce-elements,
+#elementor-panel-category-wordpress,
+#elementor-panel-footer-settings,
+#elementor-panel-footer-navigator,
+#elementor-panel-footer-history,
+#elementor-panel-footer-responsive {
+  display: none; }
 
 #elementor-panel-page-editor > #elementor-panel__editor__help,
-#elementor-panel-page-menu > #elementor-panel__editor__help{ display:none; }
+#elementor-panel-page-menu > #elementor-panel__editor__help {
+  display: none; }
 
-#elementor-editor-button{}
+#elementor-panel {
+  opacity: 1;
+  transition: 0.3s; }
 
+#elementor-panel.hideme {
+  transition: 0.3s; }
+  #elementor-panel.hideme:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    opacity: 1;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background: #eee;
+    transition: 0.3s; }
 
-#ft_mask{
-   position: absolute;;
-   width:400px;
-   height:100vh;
-   top:0;
-   right:0;
-   z-index: 99;
-   background:#eee;
-}
+#elementor-panel.hidme.hideani:before {
+  opacity: 0; }
 
-#ft_mask{
-   padding:20px;
-}
+#elementor-panel.hide {
+  display: none; }
+
+.elementor-loader {
+  background-image: url(ft-logo2.png);
+  background-position: center;
+  background-repeat: no-repeat; }
+
+/*# sourceMappingURL=emask.css.map */
