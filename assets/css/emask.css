@@ -5,11 +5,15 @@
   top: 0;
   left: 300px;
   z-index: 1;
-  padding: 20px;
+  padding: 20px 20px 20px 40px;
   background: #f4f6fd;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   font-size: 15px;
-  min-width: 270px; }
+  min-width: 300px; 
+  overflow-y: scroll;
+}
+
+
   #ft_mask button {
     cursor: pointer;
     font-size: 16px;
@@ -23,13 +27,38 @@
       background: #5c636a; }
     #ft_mask button:active {
       background: #404040; }
+
   #ft_mask h3 {
     margin-bottom: 10px;
-    padding: 0 0px 0 0px; }
+    padding: 0 0px 0 0px; 
+    margin-top:20px;
+  }
+
+  #ft_mask h3:first-child{
+    margin-top:0;
+  }
+
+
+
+
+
+
   #ft_mask .box {
     display: flex;
     align-items: center;
-    padding-top: 10px; }
+    padding-top: 10px; 
+  }
+
+  #ft_mask .box.t1,
+  #ft_mask .box.t2{
+    margin-top: 10px;;
+  }
+
+  #ft_mask .box.t11,
+  #ft_mask .box.t22{
+    padding-left:10px;   
+  }
+
     #ft_mask .box .title {
       min-width: 150px;
       text-align: center; }
@@ -111,6 +140,65 @@
 body .block-editor #elementor-switch-mode .button i {
   background-image: url(ft-logo2.png); }
 
+
+
+
+.xhide{
+  display: none ! important;
+}
+
+
+
+.module{
+  position: relative;
+  padding-bottom: 5px;;
+}
+.module .open{
+  top:5px;
+  right:0;
+}
+
+
+  .open{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-size: 31px;
+    background-image: url(dw.svg);
+    background-position: center;
+    z-index: 2;
+    transform: rotate(0deg);
+    transition: 0.3s;
+  }
+
+  .op .open{
+    transform: rotate(-180deg);
+  }
+
+  .open:active{ background-color:#f2f2f2; }
+
+
+  .sub-menu{
+    max-height: 0px;
+    overflow: hidden;    
+  }
+
+
+  .sub-menu .ibx{
+    padding: 10px 0 10px 20px;
+  }
+
+  .module.op  .sub-menu{
+    max-height: 1200px;;
+    transition: 0.3s;
+  }
+
+
+
+
+
+
+
 @media (max-width: 1440px) {
   #ft_mask {
     left: 280px; } }
@@ -123,11 +211,15 @@ body .block-editor #elementor-switch-mode .button i {
     display: none ! important;
 }
 */
+
+/*
 #elementor-panel-category-qi-addons,
 #elementor-panel-category-qode,
 #elementor-panel-category-element-pack {
-  display: none; }
-
+  display: none; 
+}
+*/
+/*
 #elementor-panel-page-menu-content .elementor-panel-menu-group:nth-child(1),
 #elementor-panel-page-menu-content .elementor-panel-menu-group .elementor-panel-menu-item-finder,
 #elementor-panel-category-theme-elements,
@@ -140,6 +232,7 @@ body .block-editor #elementor-switch-mode .button i {
 #elementor-panel-footer-history,
 #elementor-panel-footer-responsive {
   display: none; }
+  */
 
 #elementor-panel-page-editor > #elementor-panel__editor__help,
 #elementor-panel-page-menu > #elementor-panel__editor__help {

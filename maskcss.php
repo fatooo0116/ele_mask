@@ -19,9 +19,34 @@
         echo '<style>';
         foreach($st1 as $st){
             // print_r($st->name);
-            echo ($st->show!='1') ? $st->k."{ display:none; }" :'';           
+            echo ($st->hide=='1') ? $st->k."{ display:none; }" :'';           
         }
         echo '</style>';
+
+
+
+        
+        $sql = "SELECT * FROM $table_name where id='2'";    
+        $results = $wpdb->get_results($sql);
+
+        $st1 = json_decode($results[0]->json);
+       // print_r($st1);
+        echo '<style>';
+        foreach($st1 as $st){
+            // print_r($st->name);
+
+            if($st->k=='#elementor-panel-footer-tools'){
+                echo '#elementor-panel-footer-settings{ display:none; } #elementor-panel-footer-navigator{ display:none; } #elementor-panel-footer-history{ display:none; } #elementor-panel-footer-responsive{ display:none; } ';
+            }else{
+                echo ($st->hide=='1') ? $st->k."{ display:none; }" :'';   
+            }
+              
+            
+            
+        }
+        echo '</style>';
+
+
 
 
         $output = ob_get_contents();

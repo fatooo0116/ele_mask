@@ -21,7 +21,7 @@ require("option.php");
 $is_open = get_option( 'ele_mask' );
 $is_open_panel = get_option( 'ele_mask_panel' );
 
-$is_open_panel = 0;
+
 
 if($is_open_panel ){
 	require("panel.php");
@@ -114,7 +114,7 @@ add_action('wp_enqueue_scripts','load_scripts');
 function load_scripts() {
   // wp_enqueue_script( 'modernizr', get_template_directory_uri() .'/js/modernizr.custom-2.6.2.min.js', array('jquery'), '0.1', true );
 
-  // wp_enqueue_script( 'editor-script-1', plugins_url( 'assets/js/emask_fe.js', __FILE__ ),'', array('jquery'),rand(0,9999), true );
+  wp_enqueue_script( 'editor-script-1', plugins_url( 'assets/js/emask_fe.js', __FILE__ ),'', array('jquery'),rand(0,9999), true );
 
   wp_enqueue_style( 'ele-mask', plugins_url( 'wp_admin/css/fe.css', __FILE__ ),'',rand(0,99999),'all');			
 

@@ -7,6 +7,26 @@
         // console.log("....2");
 
 
+        setTimeout(function(){
+            if($("body").hasClass('elementor-editor-active')){
+                $(".elementor-add-new-section .elementor-add-template-button").remove();
+            };
+        },3000);
+
+
+        setTimeout(function(){
+            if($("body").hasClass('elementor-editor-active')){
+                $(".elementor-add-new-section .elementor-add-template-button").remove();
+            };
+        },4000);
+
+
+        setTimeout(function(){
+            if($("body").hasClass('elementor-editor-active')){
+                $(".elementor-add-new-section .elementor-add-template-button").remove();
+            };
+        },5000);
+
         /*
          check_editor = function(){
             console.log("pppp");
