@@ -25,23 +25,35 @@
 
 
 
+
+
+
+
+
         
         $sql = "SELECT * FROM $table_name where id='2'";    
         $results = $wpdb->get_results($sql);
 
         $st1 = json_decode($results[0]->json);
        // print_r($st1);
-        echo '<style>';
+        echo '<style id="aloha_hide">';
         foreach($st1 as $st){
-            // print_r($st->name);
-
+           
             if($st->k=='#elementor-panel-footer-tools'){
                 echo '#elementor-panel-footer-settings{ display:none; } #elementor-panel-footer-navigator{ display:none; } #elementor-panel-footer-history{ display:none; } #elementor-panel-footer-responsive{ display:none; } ';
             }else{
                 echo ($st->hide=='1') ? $st->k."{ display:none; }" :'';   
+            }    
+      
+            if(property_exists($st,'child')){
+                // print_r($st->child);
+                foreach($st->child as $child_st){
+                    $idx = (int)$child_st->k + 1;
+                           
+                   echo ($child_st->hide=='1') ? " ".$child_st->p." .elementor-element-wrapper:nth-child(".$idx.") { display:none; }" :'';  
+                }
             }
-              
-            
+
             
         }
         echo '</style>';

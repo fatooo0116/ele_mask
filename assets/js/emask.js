@@ -330,7 +330,7 @@ let  check_editor = null;
                       {
                           name:'搜尋小工具',
                           k:"#elementor-panel-elements-search-area",
-                          hide:'0'
+                          hide:'1'
                       }
                   ];
 
@@ -342,7 +342,11 @@ let  check_editor = null;
 
                         let child = [];
                         $(this).find('.elementor-element-wrapper').each(function(idx){
+
+                           // let dom_idx = key+" .elementor-element-wrapper:nth-child("+idx+")";
+
                             child.push({
+                                p:key,
                                 k:idx,
                                 name: $(this).find('.title').text(),
                                 hide:0
@@ -374,18 +378,39 @@ let  check_editor = null;
 
 
 
-                    /** 同步資料庫  */
+                    /** 同步資料庫  新抓欄位  */
                     last_main_setting.forEach(function(it){
 
+                        /**  main_setting 是 Mysql 欄位 */
+                        /*
                         let save_val = main_setting.filter(function(obj) { return obj.k==it.k; });
                         if(save_val.length>0){
                             it.hide = save_val[0].hide;
                         }
+                        */
+
+                        main_setting.forEach(function(top){
+                            if(it.k==top.k){
+
+                                it.hide = top.hide;
+
+                                if(top.hasOwnProperty('child')){
+                                    if(it.hasOwnProperty('child')){
+
+                                        it.child.forEach(function(it_child,it_idx){    
+                                            it_child.hide = top.child[it_idx].hide;                                                                                  
+                                        });
+                                    }
+                                }   
+
+                            }                            
+                        });
+                        
 
                     });
 
 
-
+                    console.log('同步');
                     console.log(last_main_setting);
 
                     
@@ -396,24 +421,54 @@ let  check_editor = null;
                         let checked = "";
 
 
-                            let inside_box = '';
+                            let inside_box = '';                           
+                            let child_checked = '';
+
+                         //   console.log(im);
+                         //   console.log("mathc");
+                            if(im.hasOwnProperty('child')){
+                                                                
+                                im.child.forEach(function(child_dom){
+                                    // console.log(child_dom);
+
+                                    let title =  child_dom.name;
+                                    let parent = child_dom.p;
+                                    let key =  child_dom.k;
+                                    if(child_dom.hide=='1'){ 
+                                        child_checked= "checked";
+                                    }else{
+                                        child_checked= "";
+                                    };
+                                    inside_box += '<label class="box chk"><input type="checkbox"  name="aloha1"   parent="'+parent+'"  jqk="'+key+'"  '+child_checked+'  /><div class="title">關閉 '+ title+' </div></label> ';
+                                });
+                            }
+                            
                             /*
                             $(im.k).find('.elementor-element-wrapper').each(function(idx){
-                                let me = $(this);                               
+                                let me = $(this);     
+                                
+                                if(me.hide=='1'){ child_checked= "checked";}
+                                
                                 let title = $(this).find('.title').text();
-                                inside_box +='<label class="box chk"><input type="checkbox"  name="aloha1" jqk="child'+idx+'"  '+checked+'  /><div class="title">關閉 '+ title+' </div></label> ';
-                               //  console.log(title);
+                                let dom_idx = idx;
+                                inside_box +='<label class="box chk"><input type="checkbox"  name="aloha1"   parent="'+im.k+'"  jqk="'+dom_idx+'"  '+checked+'  /><div class="title">關閉 '+ title+' </div></label> ';
+                               // console.log(title);
                             });
                             */
-
-
                             
 
-                            if(im.name=='底部選單'){
-                                html += "<h3>底部選單</h3>";
+                            if(inside_box){
+                                if(im.name=='底部選單'){
+                                    html += "<h3>底部選單</h3>";
+                                }
+                                if(im.hide=='1'){ checked= "checked";}
+                                html += '<div class="module"><label class="box chk"><input type="checkbox"  name="aloha1" jqk="'+im.k+'"  '+checked+'  /><div class="title">關閉 '+im.name+' </div></label>  <a href="#" class="open"></a>   <div class="sub-menu"><div class="ibx">'+inside_box+'</div></div></div>';
+                            }else{
+                                if(im.hide=='1'){ checked= "checked";}
+                                html += '<div class="module"><label class="box chk"><input type="checkbox"  name="aloha1" jqk="'+im.k+'"  '+checked+'  /><div class="title">關閉 '+im.name+' </div></label> </div>';
                             }
-                            if(im.hide=='1'){ checked= "checked";}
-                            html += '<div class="module"><label class="box chk"><input type="checkbox"  name="aloha1" jqk="'+im.k+'"  '+checked+'  /><div class="title">關閉 '+im.name+' </div></label>  <a href="#" class="open"></a>   <div class="sub-menu"><div class="ibx">'+inside_box+'</div></div></div>';
+
+                                                        
                     });
 
                     /*
@@ -427,27 +482,96 @@ let  check_editor = null;
                     $("#ft_mask .inner").html(html);
 
 
+
+
+                    setTimeout(function(){
+
+                        $("#ft_mask .module").each(function(){
+                                let is_open = 0;
+                                $(this).find('.sub-menu input[type="checkbox"]').each(function(){
+                                    if($(this).prop('checked')==1){
+                                        is_open =1;
+                                        return 0;
+                                    }
+                                });
+                                
+                                if(is_open){
+                                    $(this).addClass('op');
+                                }
+                        });
+                    },100);
+
+
+
+
+
+                    /**   Change the Select */
                     setTimeout(function(){
                         $("#ft_mask .inner .box.chk input").on('change',function(){
-                            console.log('change');
+                            
+                            let me = this;
+
                             let is_hide = $(this).prop('checked');
                             let jqk = $(this).attr('jqk');
-                           //  console.log(jqk);
-                            // console.log(show);
 
-                            last_main_setting.filter(function(it){
-                                if(it.k==jqk){
-                                    it.hide = (is_hide)? "1":"0" 
-                                }
-                            });
+                           // console.log(is_hide);
 
-                            console.log(last_main_setting);
+                            if($(this).attr('parent')){ /**  submenu */
+                                console.log('change parent');
+                                let parent = $(this).attr('parent');
+
+                                last_main_setting.forEach(function(it){
+
+                       
+
+                                    if(it.k==parent){
+                                        console.log(it.child);
+                                        
+                                        it.child.forEach(function(child,idx){
+                                            if(idx==jqk){                                        
+                                                it.child[idx].hide = (is_hide)? "1":"0" ;
+                                            }
+                                        });
+                                    }                                
+                                });
+
+
+                            }else{  /**  Main menu  */
+
+                                console.log('change');                              
+                                last_main_setting.filter(function(it){
+                                    if(it.k==jqk){
+                                        it.hide = (is_hide)? "1":"0" 
+                                    }
+                                    
+                            
+
+                                });
+
+                            } /**  End */
+
+                            // console.log(last_main_setting);
                         });
+
+
+
+
+
                     },10);
+
+
+
+
+
 
                     $(".module .open").on('click',function(){
                         $(this).parent().toggleClass('op');
                     });
+
+
+
+
+
 
 
                     $("#main_setting_save").on('click',function(){

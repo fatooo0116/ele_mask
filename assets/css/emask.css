@@ -61,17 +61,27 @@
 
     #ft_mask .box .title {
       min-width: 150px;
-      text-align: center; }
-    #ft_mask .box input {
+      text-align: center; 
+    }
+
+  #ft_mask .box input {
       width: calc(50% - 20px);
       background: #fff;
       font-size: 16px;
-      font-weight: 300; }
+      font-weight: 300; 
+    }
+
   #ft_mask .box.chk input {
-    width: 20px; }
+    width: 20px; 
+  }
+
   #ft_mask .box.chk .title {
     width: calc(100% - 30px);
-    text-align: left; }
+    text-align: left; 
+    white-space: nowrap;
+  }
+
+
   #ft_mask .action {
     padding: 20px;
     text-align: center; }
@@ -124,15 +134,18 @@
 
 /*   全域小工具  */
 #elementor-panel-elements-navigation .elementor-panel-navigation-tab[data-tab=global] {
-  display: none !important; }
+  /* display: none !important; */
+ }
 
 /*  專業版關掉 */
 #elementor-panel-category-pro-elements {
-  display: none; }
+   /* display: none; */
+ }
 
 /* ICON change */
 .eicon-wordpress-light:before {
-  content: "" !important; }
+  /* content: "" !important; */
+ }
 
 .e-logo-wrapper {
   display: none !important; }
@@ -185,7 +198,7 @@ body .block-editor #elementor-switch-mode .button i {
 
 
   .sub-menu .ibx{
-    padding: 10px 0 10px 20px;
+    padding: 5px 0 10px 20px;
   }
 
   .module.op  .sub-menu{
