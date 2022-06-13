@@ -6,16 +6,20 @@ function product_meta_db() {
 
 
   
-
   /* 客戶地址分類  */
   $table_name = $wpdb->prefix . 'mask_setting';
   $sql = "CREATE TABLE $table_name (
-    'id' int(50) NOT NULL AUTO_INCREMENT, 
-    'json' json NOT NULL,
+    `id` int(50) NOT NULL AUTO_INCREMENT, 
+    `json` json NOT NULL,
     
     UNIQUE KEY id (id)
   ) $charset_collate;";
   dbDelta( $sql );
+
+  
+ //  $sql1 = 'Insert INTO '.$table_name.' (`json`) VALUES (`[]`)';
+  $wpdb->insert($table_name, array('json' => '[]'));
+  $wpdb->insert($table_name, array('json' => '[]'));
 
 
 

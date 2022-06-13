@@ -330,7 +330,7 @@ let  check_editor = null;
                       {
                           name:'搜尋小工具',
                           k:"#elementor-panel-elements-search-area",
-                          hide:'1'
+                          hide:'0'
                       }
                   ];
 
@@ -410,8 +410,8 @@ let  check_editor = null;
                     });
 
 
-                    console.log('同步');
-                    console.log(last_main_setting);
+                  //  console.log('同步');
+                  //  console.log(last_main_setting);
 
                     
 
@@ -443,18 +443,6 @@ let  check_editor = null;
                                 });
                             }
                             
-                            /*
-                            $(im.k).find('.elementor-element-wrapper').each(function(idx){
-                                let me = $(this);     
-                                
-                                if(me.hide=='1'){ child_checked= "checked";}
-                                
-                                let title = $(this).find('.title').text();
-                                let dom_idx = idx;
-                                inside_box +='<label class="box chk"><input type="checkbox"  name="aloha1"   parent="'+im.k+'"  jqk="'+dom_idx+'"  '+checked+'  /><div class="title">關閉 '+ title+' </div></label> ';
-                               // console.log(title);
-                            });
-                            */
                             
 
                             if(inside_box){
@@ -543,20 +531,11 @@ let  check_editor = null;
                                     if(it.k==jqk){
                                         it.hide = (is_hide)? "1":"0" 
                                     }
-                                    
-                            
-
+                                                            
                                 });
-
                             } /**  End */
-
                             // console.log(last_main_setting);
                         });
-
-
-
-
-
                     },10);
 
 
@@ -571,6 +550,39 @@ let  check_editor = null;
 
 
 
+                    let js_to_css_main = function(){
+                        console.log(last_main_setting);
+
+                        last_main_setting.forEach(function(item){
+                            if(item.hide=='1'){
+                                console.log(item.k);
+                                $(item.k).css('display','none');
+                            }else{
+                                $(item.k).css('display','block');
+                            }
+
+                            if(item.hasOwnProperty('child')){
+                                let child = item.child;
+                                child.forEach(function(my_child){
+
+                                    console.log(my_child);
+                                    let key = my_child.k+1;
+                                    let target = my_child.p+' .elementor-element-wrapper:nth-child('+key+')';
+                                    console.log(target);
+
+                                    if(my_child.hide=='1'){
+                                        $(target).css('display','none');
+                                    }else{
+                                        $(target).css('display','block');
+                                    }
+                                });
+                            }
+                        });
+                    }
+
+
+
+
 
 
 
@@ -579,18 +591,37 @@ let  check_editor = null;
                         console.log(last_main_setting);
 
                         /**  js control css first */
+                        js_to_css_main();
                         
                         $.post( "/wp-json/my_api/update_main_setting",{ data:last_main_setting } , function( data ) {                        
                         //   data = JSON.parse(data);
                         //  console.log(data);                      
-                        });
-                        
-
+                        });                    
                     });
+                    /**  main_setting_save  */
+
+
             }
 
+            
 
             check_editor();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             
@@ -719,7 +750,6 @@ let  check_editor = null;
 
 
            // console.log(obj);
-
         });            
     });
 

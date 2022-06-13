@@ -1,5 +1,4 @@
-<?php 
-    
+<?php    
     add_shortcode( 'maskcss', 'maskcss_func' );
     function maskcss_func( $atts ) {
         $atts = shortcode_atts( array(
@@ -8,14 +7,11 @@
         ), $atts, 'maskpanel' );
     
         ob_start();
-
         global $wpdb;
         $table_name =  $wpdb->prefix . 'mask_setting';;    
         $sql = "SELECT * FROM $table_name where id='1'";    
         $results = $wpdb->get_results($sql);
-
         $st1 = json_decode($results[0]->json);
-       // print_r($st1);
         echo '<style>';
         foreach($st1 as $st){
             // print_r($st->name);
@@ -24,26 +20,23 @@
         echo '</style>';
 
 
-
-
-
-
-
-
-        
         $sql = "SELECT * FROM $table_name where id='2'";    
         $results = $wpdb->get_results($sql);
-
         $st1 = json_decode($results[0]->json);
-       // print_r($st1);
+
         echo '<style id="aloha_hide">';
         foreach($st1 as $st){
            
             if($st->k=='#elementor-panel-footer-tools'){
-                echo '#elementor-panel-footer-settings{ display:none; } #elementor-panel-footer-navigator{ display:none; } #elementor-panel-footer-history{ display:none; } #elementor-panel-footer-responsive{ display:none; } ';
+                if($st->hide=='1'){
+                    echo '#elementor-panel-footer-settings{ display:none; } #elementor-panel-footer-navigator{ display:none; } #elementor-panel-footer-history{ display:none; } #elementor-panel-footer-responsive{ display:none; } ';
+                }               
             }else{
-                echo ($st->hide=='1') ? $st->k."{ display:none; }" :'';   
-            }    
+                if($st->hide=='1'){
+                    echo $st->k." { display:none; }";
+                }
+            }
+
       
             if(property_exists($st,'child')){
                 // print_r($st->child);

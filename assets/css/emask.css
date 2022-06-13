@@ -134,12 +134,12 @@
 
 /*   全域小工具  */
 #elementor-panel-elements-navigation .elementor-panel-navigation-tab[data-tab=global] {
-  /* display: none !important; */
+  display: none !important; 
  }
 
 /*  專業版關掉 */
 #elementor-panel-category-pro-elements {
-   /* display: none; */
+    display: none; 
  }
 
 /* ICON change */
@@ -208,6 +208,11 @@ body .block-editor #elementor-switch-mode .button i {
 
 
 
+
+
+  #elementor-panel-global{
+    display:none;
+  }
 
 
 
